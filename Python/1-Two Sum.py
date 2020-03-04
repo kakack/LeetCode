@@ -8,6 +8,7 @@
 # Because nums[0] + nums[1] = 2 + 7 = 9,
 # return [0, 1].
 
+
 class Solution(object):
     def twoSum(self, nums, target):
         """
@@ -22,3 +23,10 @@ class Solution(object):
                     return i, j
                 else:
                     continue
+
+min
+# if __name__ == '__main__':
+#     nums = [2, 7, 11, 15]
+#     target = 9
+#     s = Solution()
+#     print(s.twoSum(nums, target))
