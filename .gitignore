@@ -161,4 +161,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-.idea/
+# added by Miniconda3 installer
+Python/.idea/
+C++/.vscode
