@@ -23,6 +23,10 @@ For now, the judge is able to judge based on one instance of gray code sequence.
 Gray Code 可以直接用数学公式,整数 n 的格雷码是 n ⊕ (n/2)。
 */
 
+
+#include <vector>
+#include <iostream
+
 class Solution {
 public:
    int binary_to_gray(int i){
