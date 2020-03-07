@@ -29,23 +29,20 @@ class Solution(object):
         :type K: int
         :rtype: str
         """
-        store = []
         res = ""
         count = 0
         for i in range(len(S) - 1, -1, -1):
             if S[i] == '-':
                 continue
             else:
-                store.append(S[i])
-        for item in store:
-            if count == K:
-                # res.insert(0, '-')
-                res = '-' + res
-                count = 0
-            # res.insert(0, item.upper())
-            res = item.upper() + res
-            count += 1
+                if count == K:
+                    res = '-' + res
+                    count = 0
+                res = S[i].upper() + res
+                count += 1
         return res
+
+
 
 if __name__ == '__main__':
     s = Solution()
