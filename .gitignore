@@ -162,5 +162,6 @@ dmypy.json
 .pyre/
 
 # added by Miniconda3 installer
-Python/.idea/
-C++/.vscode
+./Python/.idea/*
+./C++/.vscode/*
+.DS_Store
