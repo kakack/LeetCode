@@ -22,3 +22,16 @@ class Solution(object):
         :type head: ListNode
         :rtype: bool
         """
+        deque = []
+        curr = head
+        while curr is not None:
+            deque.append(curr.val)
+            curr = curr.next
+        first, second = 0, len(deque) - 1
+        while first < second:
+            if deque[first] != deque[second]:
+                return False
+            else:
+                first += 1
+                second -= 1
+        return True
