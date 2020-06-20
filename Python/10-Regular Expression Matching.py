@@ -1,26 +1,64 @@
-# Implement regular expression matching with support for '.' and '*'.
+# -*- coding: utf-8 -*
+"""
+@author: Kai Chen
+@file: 10-Regular Expression Matching.py
+@time: 2020/6/20 11:30
+@desc:
+"""
+"""
+Given an input string (s) and a pattern (p), implement regular expression matching with support for '.' and '*'.
 
-# '.' Matches any single character.
-# '*' Matches zero or more of the preceding element.
+'.' Matches any single character.
+'*' Matches zero or more of the preceding element.
+The matching should cover the entire input string (not partial).
 
-# The matching should cover the entire input string (not partial).
+Note:
 
-# The function prototype should be:
-# bool isMatch(const char *s, const char *p)
+s could be empty and contains only lowercase letters a-z.
+p could be empty and contains only lowercase letters a-z, and characters like . or *.
+Example 1:
 
-# Some examples:
-# isMatch("aa","a") → false
-# isMatch("aa","aa") → true
-# isMatch("aaa","aa") → false
-# isMatch("aa", "a*") → true
-# isMatch("aa", ".*") → true
-# isMatch("ab", ".*") → true
-# isMatch("aab", "c*a*b") → true
+Input:
+s = "aa"
+p = "a"
+Output: false
+Explanation: "a" does not match the entire string "aa".
+Example 2:
 
-# 递归：
-class Solution:
-    # @return a boolean
+Input:
+s = "aa"
+p = "a*"
+Output: true
+Explanation: '*' means zero or more of the preceding element, 'a'. Therefore, by repeating 'a' once, it becomes "aa".
+Example 3:
+
+Input:
+s = "ab"
+p = ".*"
+Output: true
+Explanation: ".*" means "zero or more (*) of any character (.)".
+Example 4:
+
+Input:
+s = "aab"
+p = "c*a*b"
+Output: true
+Explanation: c can be repeated 0 times, a can be repeated 1 time. Therefore, it matches "aab".
+Example 5:
+
+Input:
+s = "mississippi"
+p = "mis*is*p*."
+Output: false
+"""
+
+class Solution(object):
     def isMatch(self, s, p):
+        """
+        :type s: str
+        :type p: str
+        :rtype: bool
+        """
         if len(p)==0: return len(s)==0
         if len(p)==1 or p[1]!='*':
             if len(s)==0 or (s[0]!=p[0] and p[0]!='.'):
@@ -32,24 +70,3 @@ class Solution:
                 if self.isMatch(s[i+1:],p[2:]): return True
                 i+=1
             return False
-
-# 动态规划
-
-class Solution:
-    # @return a boolean
-    def isMatch(self, s, p):
-        dp=[[False for i in range(len(p)+1)] for j in range(len(s)+1)]
-        dp[0][0]=True
-        for i in range(1,len(p)+1):
-            if p[i-1]=='*':
-                if i>=2:
-                    dp[0][i]=dp[0][i-2]
-        for i in range(1,len(s)+1):
-            for j in range(1,len(p)+1):
-                if p[j-1]=='.':
-                    dp[i][j]=dp[i-1][j-1]
-                elif p[j-1]=='*':
-                    dp[i][j]=dp[i][j-1] or dp[i][j-2] or (dp[i-1][j] and (s[i-1]==p[j-2] or p[j-2]=='.'))
-                else:
-                    dp[i][j]=dp[i-1][j-1] and s[i-1]==p[j-1]
-        return dp[len(s)][len(p)]
