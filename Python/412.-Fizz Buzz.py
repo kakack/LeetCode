@@ -56,5 +56,19 @@ class Solution(object):
 
 
 if __name__ == '__main__':
-    s = Solution()
-    print(s.fizzBuzz(20))
+    # s = Solution()
+    # print(s.fizzBuzz(20))
+
+    def square():
+        for x in range(4):
+            yield x ** 2
+
+
+    square_gen = square()
+    for x in square_gen:
+        print(x)
+
+    genitor = square_gen.__iter__()
+    while True:
+        x = genitor.__next__()  # Python 3 是 __next__()
+        print(x)
