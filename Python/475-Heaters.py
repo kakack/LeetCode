@@ -51,8 +51,6 @@ class Solution(object):
             left, right = max(0, index - 1), min(nheaters - 1, index)
             if left == right:
                 res.append(abs(house - heaters[left]))
-            elif heaters[index] == house:
-                res.append(0)
             else:
                 res.append(min(house - heaters[index - 1], heaters[index] - house))
         return max(res)
