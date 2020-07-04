@@ -25,17 +25,17 @@ class Solution(object):
         max_len = 0
         for i in xrange(len(s)):
             tmp = self.palindrome(s, i, i)
-            if len(tmp)>=max_len:
+            if len(tmp) >= max_len:
                 res = tmp
                 max_len = len(tmp)
-            tmp = self.palindrome(s, i, i+1)
-            if len(tmp)>=max_len:
+            tmp = self.palindrome(s, i, i + 1)
+            if len(tmp) >= max_len:
                 res = tmp
                 max_len = len(tmp)
         return res
-    
+
     def palindrome(self, s, i, j):
-        while i>=0 and j<len(s) and s[i]==s[j]:
+        while i >= 0 and j < len(s) and s[i] == s[j]:
             i -= 1
             j += 1
-        return s[i+1:j]
+        return s[i + 1:j]
