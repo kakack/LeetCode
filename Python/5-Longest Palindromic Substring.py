@@ -24,7 +24,7 @@ class Solution(object):
         res = ""
         max_len = 0
         for i in xrange(len(s)):
-            tmp = self.palindrome(s, i ,i)
+            tmp = self.palindrome(s, i, i)
             if len(tmp)>=max_len:
                 res = tmp
                 max_len = len(tmp)
