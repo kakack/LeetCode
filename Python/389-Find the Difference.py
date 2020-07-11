@@ -70,6 +70,11 @@ class Solution(object):
         # for k in hashMap.keys():
         #     if hashMap[k] != 0:
         #         return k
+        sum = s[:] + t[:]
+        res = 0
+        for c in sum:
+            res ^= ord(c)
+        return chr(res)
 
 
 
