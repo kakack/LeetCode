@@ -45,14 +45,14 @@ class Solution(object):
         return "".join(tmp)
 
 
-# class Solution(object):
-#     def reverseStr(self, s, k):
-#         a = list(s)
-#         for i in range(0, len(a), 2*k):
-#             a[i:i+k] = reversed(a[i:i+k])
-#         return "".join(a)
+
+    def reverseStr2(self, s, k):
+        a = list(s)
+        for i in range(0, len(a), 2*k):
+            a[i:i+k] = reversed(a[i:i+k])
+        return "".join(a)
 
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.reverseStr("abcdefg", 2))
+    print(s.reverseStr2("abcdefg", 2))
