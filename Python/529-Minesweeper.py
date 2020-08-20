@@ -122,10 +122,25 @@ class Solution(object):
                                 queue.append((i_, j_))
                                 board[i_][j_] = "B"
 
+        def dfs(x, y):
+            flag = nearMine(x, y)
+            if flag > 0:
+                board[x][y] = str(flag)
+                return
+            board[x][y] = "B"
+            for mx in [-1, 0, 1]:
+                for my in [-1, 0, 1]:
+                    if (mx, my) == (0, 0):
+                        continue
+                    x_, y_ = x + mx, y + my
+                    if 0 <= x_ < row and 0 <= y_ < col and board[x_][y_] == "E":
+                        dfs(x_, y_)
+
         if board[x][y] == 'M':
             board[x][y] = 'X'
         else:
             bfs(x, y)
+            # dfs(x, y)
         return board
 
 
