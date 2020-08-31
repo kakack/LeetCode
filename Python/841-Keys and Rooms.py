@@ -42,7 +42,27 @@ Accepted
 
 from collections import deque
 
+# bfs
+# class Solution(object):
+#     def canVisitAllRooms(self, rooms):
+#         """
+#         :type rooms: List[List[int]]
+#         :rtype: bool
+#         """
+#         n = len(rooms)
+#         visited = [0 for _ in range(n)]
+#         visited[0] = 1
+#         stack = deque([0])
+#         while stack:
+#             room_idx = stack.popleft()
+#             visited[room_idx] = 1
+#             for key in rooms[room_idx]:
+#                 if not visited[key]:
+#                     stack.append(key)
+#         return False if 0 in visited else True
 
+
+# dfs
 class Solution(object):
     def canVisitAllRooms(self, rooms):
         """
@@ -50,17 +70,18 @@ class Solution(object):
         :rtype: bool
         """
         n = len(rooms)
-        visited = [0 for _ in range(n)]
-        visited[0] = 1
-        stack = deque([0])
-        while stack:
-            room_idx = stack.popleft()
-            visited[room_idx] = 1
-            for key in rooms[room_idx]:
-                if not visited[key]:
-                    stack.append(key)
-        return False if 0 in visited else True
+        visited = set([0])
 
+        def dfs(room):
+            visited.add(room)
+            for key in rooms[room]:
+                if key not in visited:
+                    dfs(key)
+
+        dfs(0)
+        return len(visited) == n
+
+            
 
 if __name__ == '__main__':
     s = Solution()
