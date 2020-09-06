@@ -29,17 +29,17 @@ Output:
 
 
 class Solution(object):
-    def subsets(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: List[List[int]]
-        递归
-        """
-        n = len(nums)
-        result = [[]]
-        for num in nums:
-            result += [curr + [num] for curr in result]
-        return result
+    # def subsets(self, nums):
+    #     """
+    #     :type nums: List[int]
+    #     :rtype: List[List[int]]
+    #     递归
+    #     """
+    #     n = len(nums)
+    #     result = [[]]
+    #     for num in nums:
+    #         result += [curr + [num] for curr in result]
+    #     return result
 
     def subsets(self, nums):
         """
@@ -47,10 +47,21 @@ class Solution(object):
         :rtype: List[List[int]]
         回溯
         """
-
+        result = []
+        n = len(nums)
+        for k in range(n + 1):
+            def backtrack(first=0, curr=[]):
+                if len(curr) == k:
+                    result.append(curr[:])
+                for i in range(first, n):
+                    curr.append(nums[i])
+                    backtrack(1 + i, curr)
+                    curr.pop()
+            backtrack()
+        return result
 
 
 if __name__ == '__main__':
     s = Solution()
-    ipt = [1, 2, 3, 4, 5]
+    ipt = [1, 2, 3, 4]
     print(s.subsets(ipt))
