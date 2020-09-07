@@ -38,6 +38,14 @@ class Solution(object):
         heap, result = [], []
         for i in dic:
             heapq.heappush(heap, (-dic[i], i))
+        print(heap)
         for _ in range(k):
             result.append(heapq.heappop(heap)[1])
         return result
+
+
+if __name__ == '__main__':
+    s = Solution()
+    ipt = [1, 1, 1, 2, 2, 3, 4, 4, 4, 5, 5, 6, 6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 1, 1, 1, 1, 2, 2,
+           18]
+    print(s.topKFrequent(ipt, 3))
