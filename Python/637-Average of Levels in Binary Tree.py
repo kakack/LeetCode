@@ -22,6 +22,8 @@ The range of node's value is in the range of 32-bit signed integer.
 """
 
 import collections
+
+
 # Definition for a binary tree node.
 class TreeNode(object):
     def __init__(self, val=0, left=None, right=None):
@@ -35,6 +37,7 @@ class Solution(object):
         """
         :type root: TreeNode
         :rtype: List[float]
+        bfs
         """
         result = []
 
@@ -49,5 +52,28 @@ class Solution(object):
                     nodes.append(node.left)
                 if node.right:
                     nodes.append(node.right)
-            result.append(sum/n)
+            result.append(sum / n)
         return result
+
+    def averageOfLevels(self, root: TreeNode) -> list[float]:
+        """
+        :type root: TreeNode
+        :rtype: List[float]
+        dfs
+        """
+        counts, sums = [], []
+
+        def dfs(root, depth):
+            if not root:
+                return
+            if depth < len(counts):
+                counts[depth] += 1
+                sums[depth] += root.val
+            else:
+                sums.append(root.val)
+                counts.append(1)
+            dfs(root.left, depth + 1)
+            dfs(root.right, depth + 1)
+
+        dfs(root, 0)
+        return [sums[i] / counts[i] for i in range(len(sums))]
