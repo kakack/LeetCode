@@ -55,4 +55,4 @@ class Solution(object):
 
 if __name__ == '__main__':
     s = Solution()
-    print(s.decompressRLElist([1,2,3,4]))
+    print(s.decompressRLElist([1, 2, 3, 4]))
