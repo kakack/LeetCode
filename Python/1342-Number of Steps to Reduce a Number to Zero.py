@@ -11,12 +11,14 @@ class Solution(object):
         :type num: int
         :rtype: int
         """
-        count = 0
-        while num != 0:
-            if num % 2 == 1:
-                count += 1
-                num -= 1
-            else:
-                num = num // 2
-                count += 1
-        return count
+        # count = 0
+        # while num != 0:
+        #     if num % 2 == 1:
+        #         count += 1
+        #         num -= 1
+        #     else:
+        #         num = num // 2
+        #         count += 1
+        # return count
+
+        return max(0, bin(num).count('1') + num.bit_length() - 1)
