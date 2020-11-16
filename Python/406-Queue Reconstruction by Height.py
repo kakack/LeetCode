@@ -27,19 +27,29 @@ class Solution(object):
         :type people: List[List[int]]
         :rtype: List[List[int]]
         """
-        people.sort(key=lambda x: (x[0], -x[1]))
-        # print(people)
-        n = len(people)
-        ans = [[] for _ in range(n)]
-        for person in people:
-            spaces = person[1] + 1
-            for i in range(n):
-                if not ans[i]:
-                    spaces -= 1
-                    if spaces == 0:
-                        ans[i] = person
-                        break
-        return ans
+        # people.sort(key=lambda x: (x[0], -x[1]))
+        # # print(people)
+        # n = len(people)
+        # ans = [[] for _ in range(n)]
+        # for person in people:
+        #     spaces = person[1] + 1
+        #     for i in range(n):
+        #         if not ans[i]:
+        #             spaces -= 1
+        #             if spaces == 0:
+        #                 ans[i] = person
+        #                 break
+        # return ans
+
+        if len(people) <= 1:
+            return people
+
+        people = sorted(people, key=lambda x: (-x[0], x[1]))
+        new_people = [people[0]]  # 这个人是从前往后、从上往下看到的第一个人
+        for i in people[1:]:
+            new_people.insert(i[1], i)
+        return new_people
+
 
 
 if __name__ == '__main__':
