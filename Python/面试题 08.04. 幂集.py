@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*
+"""
+@author: Kai Chen
+@file: 面试题 08.04. 幂集.py
+@time: 2020/11/17 10:44
+@desc:
+幂集。编写一种方法，返回某集合的所有子集。集合中不包含重复的元素。
+
+说明：解集不能包含重复的子集。
+
+示例:
+
+ 输入： nums = [1,2,3]
+ 输出：
+[
+  [3],
+  [1],
+  [2],
+  [1,2,3],
+  [1,3],
+  [2,3],
+  [1,2],
+  []
+]
+"""
+
+
+# 非递归
+class Solution1(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = [[]]
+        for num in nums:
+            n = len(res)
+            for i in range(n):
+                temp = list(res[i])
+                temp.append(num)
+                res.append(temp)
+        return res
+
+
+# 回溯
+class Solution2(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        res = list()
+
+        def backtrack(res, tempList, nums, start):
+            res.append(list(tempList))
+            for i in range(start, len(nums)):
+                tempList.append(nums[i])
+                backtrack(res, tempList, nums, i + 1)
+                tempList.pop(-1)
+        backtrack(res, [], nums, 0)
+        return res
+
+if __name__ == '__main__':
+    s = Solution2()
+    ipt = [1, 2, 3]
+    print(s.subsets(ipt))
