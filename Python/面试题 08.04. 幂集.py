@@ -65,6 +65,8 @@ private void backtrack("原始参数") {
 }
 
 """
+
+
 class Solution2(object):
     def subsets(self, nums):
         """
@@ -79,10 +81,30 @@ class Solution2(object):
                 tempList.append(nums[i])
                 backtrack(res, tempList, nums, i + 1)
                 tempList.pop(-1)
+
         backtrack(res, [], nums, 0)
         return res
 
+
+# 位运算法
+class Solution3(object):
+    def subsets(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: List[List[int]]
+        """
+        length = 1 << len(nums)
+        res = []
+        for i in range(length):
+            tmp = list()
+            for j in range(len(nums)):
+                if i >> j & 1 == 1:
+                    tmp.append(nums[j])
+            res.append(tmp)
+        return res
+
+
 if __name__ == '__main__':
-    s = Solution2()
+    s = Solution3()
     ipt = [1, 2, 3]
     print(s.subsets(ipt))
