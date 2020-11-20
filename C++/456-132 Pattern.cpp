@@ -33,7 +33,10 @@ n == nums.length
 
 #include <algorithm>
 #include <stack>
+#include <iostream>
+#include <vector>
 
+using namespace std;
 class Solution {
 public:
     bool find132pattern(vector<int>& nums) {
@@ -62,3 +65,18 @@ public:
         return false;
     }
 };
+
+int main(int argc, char const *argv[])
+{
+    Solution s;
+    int nums[4] = {3, 1, 4, 2};
+    vector<int> ipt(nums, nums + 4); 
+    if (s.find132pattern(ipt)){
+        cout<< "True"<<endl;
+    } else
+    {
+        cout << "False"<<endl;
+    }
+    
+    return 0;
+}
