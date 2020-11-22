@@ -45,11 +45,14 @@ The number of nodes in the list is in the range [0, 5 * 104].
 
 import sys
 
+
 # Definition for singly-linked list.
 class ListNode(object):
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
 class Solution(object):
     def sortList(self, head):
         """
@@ -88,5 +91,5 @@ class Solution(object):
                     fast = fast.next
             mid = slow
             return merge(sortFunc(head, mid), sortFunc(mid, tail))
-        return sortFunc(head, None)
 
+        return sortFunc(head, None)
