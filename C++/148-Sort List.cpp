@@ -74,8 +74,6 @@ public:
         }
         ListNode* mid = slow;
         return mergeLists(sortFunc(head, mid), sortFunc(mid, tail));
-
-        
     }
 
     ListNode* mergeLists(ListNode* head1, ListNode* head2) {
