@@ -40,6 +40,6 @@ public:
             s2t[x] = y;
             t2s[y] = x;
         }
-        return true
+        return true;
     }
 };
