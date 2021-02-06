@@ -55,10 +55,14 @@ public:
         int left = n - k;
         int sum_ = accumulate(cardPoints.begin(), cardPoints.end(), 0);
         int sums = accumulate(cardPoints.begin(), cardPoints.begin() + left, 0);
+        int ans = sums;
 
-        ans = sums;
-
-
-
+        for (int i = 1; i <= k; i++)
+        {
+            sums -= cardPoints[i - 1];
+            sums += cardPoints[i + left - 1];
+            ans = min(ans, sums);
+        }
+        return sum_ - ans;
     }
 };

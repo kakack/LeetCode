@@ -46,6 +46,7 @@ class Solution {
 public:
     vector<int> fairCandySwap(vector<int>& A, vector<int>& B) {
         int dif = (accumulate(B.begin(), B.end(), 0) -  accumulate(A.begin(), A.end(), 0)) / 2;
+        // int dif = (accumulate(A.begin(), A.end(), 0) - accumulate(B.begin(), B.end(), 0)) / 2;
         for (auto& item: A) {
             if (find(B.begin(), B.end(), dif + item) != B.end()) {
                 return vector<int>{item, dif + item};
