@@ -29,17 +29,15 @@ public:
     int minSwapsCouples(vector<int>& row) {
         int n = row.size(), res = 0;
         for (int i = 0; i < n - 1; i += 2) {
-            if (row[i] == row[i + 1] ^ 1) {
-                continue;
-            }
-            for (int j = i + 1; j < n; j ++) {
-                if (row[i] == row[j] ^ 1) {
-                    swap(row[i + 1], row[j]);
+            if (row[i] != (row[i + 1] ^ 1)) {
+                for (int j = i + 1; j < n; j ++) {
+                    if (row[i] == (row[j] ^ 1)) {
+                        swap(row[i + 1], row[j]);
+                    }
                 }
+                res ++;
             }
-            res ++;
         }
         return res;
     }
-    
 };

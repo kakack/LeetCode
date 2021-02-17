@@ -28,7 +28,7 @@ nums.length == 2 * n
 
 
 #include <vector>
-#include <alorithm>
+#include <algorithm>
 
 using namespace std;
 class Solution {
@@ -40,6 +40,5 @@ public:
             ans += nums[i];
         }
         return ans;
-
     }
 };
