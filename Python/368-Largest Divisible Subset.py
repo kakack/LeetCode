@@ -41,7 +41,7 @@ class Solution(object):
         :rtype: List[int]
         """
         n = len(nums)
-        sorted(nums)
+        nums = sorted(nums)
         dp = [1] * n
         maxSize = 1
         maxVal = dp[0]
