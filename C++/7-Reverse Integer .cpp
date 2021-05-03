@@ -18,21 +18,22 @@ Did you notice that the reversed integer might overflow? Assume the input is a 3
 Throw an exception? Good, but what if throwing an exception is not an option? You would then have to re-design the function (ie, add an extra parameter).
 */
 
+#include <string>
+
+using namespace std;
+
 class Solution {
 public:
     int reverse(int x) {
-        int flg=1,ans=0;
-        if(x<0){
-            x=-x;
-            flg=-1;
+        int rev = 0;
+        while (x != 0) {
+            if (rev < INT_MIN / 10 || rev > INT_MAX / 10) {
+                return 0;
+            }
+            int digit = x % 10;
+            x /= 10;
+            rev = rev * 10 + digit;
         }
-        
-        while(x>0){
-        ans=ans*10+x%10;
-        x=x/10;
-        }
-        
-        return flg*ans;
-        
+        return rev;
     }
 };
