@@ -37,5 +37,18 @@ public:
     int leastBricks(vector<vector<int>>& wall) {
         unordered_map<int, int> subs;
         int height = wall.size();
+        for (auto &line: wall) {
+            int add = 0;
+            int cnt = line.size();
+            for (int i = 0; i < cnt - 1; i ++) {
+                add += line[i];
+                subs[add] += 1;
+            }
+        }
+        int maxCnt = 0;
+        for (auto& [_, c] : subs) {
+            maxCnt = max(maxCnt, c);
+        }
+        return height - maxCnt;
     }
 };
