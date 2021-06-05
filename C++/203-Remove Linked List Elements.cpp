@@ -38,17 +38,15 @@ The number of nodes in the list is in the range [0, 104].
 class Solution {
 public:
     ListNode* removeElements(ListNode* head, int val) {
-        ListNode *preHead = ListNode();
-        preHead->next = head;
-        ListNode *curr = preHead;
-        while(true) {
-            if (curr->next == nullptr) {
-                break;
-            } else if (curr->next->val != val) {
+        ListNode *preHead = new ListNode(0, head);
+        ListNode* curr = preHead;
+        while(curr->next != nullptr) {
+            if (curr->next->val != val) {
                 curr = curr->next;
             } else {
-                curr
+                curr->next = curr->next->next;
             }
         }
+        return preHead->next;
     }
 };
